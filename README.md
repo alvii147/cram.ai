@@ -9,11 +9,11 @@ While our transition to online learning has been fairly smooth, various barriers
 ## What it does
 ***cram.ai*** is a web platform that uses natural language processing to analyze educational lecture videos, intended to help students analyze university lectures and test their knowledge. From the link to the YouTube video, ***cram.ai*** is able to extract the transcript of the lecture, process its contents, comprehensively summarize the lecture, and generate flashcards with fill-in-the-blanks questions and answers on core concepts.
   
-![screenshot1](static/screenshot1.png)  
+![screenshot1](static/screenshot1.PNG)  
   
-![screenshot2](static/screenshot2.png)  
+![screenshot2](static/screenshot2.PNG)  
   
-![screenshot3](static/screenshot3.png)  
+![screenshot3](static/screenshot3.PNG)  
   
 ![screenshot4](static/screenshot4.png)  
   
