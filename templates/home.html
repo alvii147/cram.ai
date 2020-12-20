@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block header %}
+<image src = "{{ url_for('static', filename='logo_light_animated.gif')}}" alt = "homebutton" height = 300>
+{% endblock %}
+{% block content %}
+<form action="#" method="post">
+    <label for="url" style="font-size: 16px;" width = >Youtube Link to Lecture Video:</label><br>
+    <input type="url" id="url" name="url" style="font-size: 16px; width: 100%;"/><br><br>
+    <button class = mybutton type="submit">Go!</button>
+</form>
+{% endblock %}

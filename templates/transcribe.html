@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block header %}
+<image src = "{{ url_for('static', filename='logo_light_animated.gif')}}" alt = "homebutton" height = 100>
+{% endblock %}
+{% block content %}
+<div style="display:flex;justify-content:center;align-items:center;">
+    <iframe width="700" height="400" src="{{URL}}"></iframe>
+</div>
+<div style = "margin: 0 auto; overflow: auto; border: 3px solid rgb(0, 0, 0); padding: 10px; text-align: justify; background-color:rgb(255, 242, 198);">
+    <p style = "font-weight: bold; font-family: Georgia; font-size: 20px;">
+        Transcript
+    </p>
+    <p style = "font-family: Georgia; font-size: 20px;">
+        {{transcript|safe}}
+    </p>
+</div>
+<br>
+<div style = "background-image: url({{ url_for('static', filename='lined_paper.jpg') }}); padding: 10px;">
+    <p style = "font-weight: bold; font-family: 'Ink Free'; font-size: 20px;">
+        Summary
+    </p>
+    <p style = "font-family: 'Ink Free'; font-size: 20px;">
+        {{summary|safe}}
+    </p>
+</div>
+<br>
+{% for card in flashcards %}
+<div class="flip-card">
+    <div class="flip-card-inner">
+        <div class="flip-card-front">
+            {{card[0]}}
+        </div>
+        <div class="flip-card-back">
+            {{card[1]}}
+        </div>
+    </div>
+  </div>
+  <br>
+{% endfor %}
+{% endblock %}
