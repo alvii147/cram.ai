@@ -17,6 +17,28 @@ While our transition to online learning has been fairly smooth, various barriers
   
 ![screenshot4](static/screenshot4.png)  
   
+## Dependencies & How To
+### Install YouTube Transcript API
+```
+pip install youtube-transcript-api
+```
+### Install NLTK
+```
+pip install nltk
+```
+### Install Google Cloud Language Client Library
+```
+pip install google-cloud-language
+```
+### Install Flask
+```
+pip install flask
+```
+### Run cram.ai
+```
+python app.py
+```
+
 ## How I built it
 ***cram.ai*** utilizes the **YouTube Transcript API** in **Python** to extract the transcript of a video and uses a pre-trained recurrent neural network model to punctuate the transcript. In order to summarize the transcript, cram.ai uses **NLTK** library in Python to perform natural language processing and obtain the sentences that contain the core concepts. Using **Google Cloud Language,** ***cram.ai*** is able to perform entity analysis to produce flashcards and Wikipedia pages for entities. The website is built using **Flask** and **Bootstrap.**
 
