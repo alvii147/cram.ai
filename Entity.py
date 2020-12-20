@@ -3,6 +3,7 @@ import re
 from google.cloud import language
 from nltk import sent_tokenize
 
+# get entities from text
 def getEntities(text):
     os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r"general-use-c85025f0b131.json"
     client = language.LanguageServiceClient()
@@ -10,6 +11,7 @@ def getEntities(text):
     response = client.analyze_entities(document = document)
     return response.entities
 
+# get entities with wikipedia links
 def getWikipediaLinks(entities):
     wiki = {}
     for entity in entities:
@@ -18,6 +20,7 @@ def getWikipediaLinks(entities):
             wiki[str(entity.name)] = str(wiki_url)
     return wiki
 
+# add wikipedia hyperlinks to entities
 def addHTMLWikipediaLinks(wiki_links, text):
     return_text = text
     for link in wiki_links:
@@ -25,12 +28,14 @@ def addHTMLWikipediaLinks(wiki_links, text):
         return_text = pattern.sub(f"<a href=\"{wiki_links[link]}\">{link}</a>", return_text, count = 1)
     return return_text
 
+# add wikipedia hyperlinks to text
 def entityToHTMLLinks(text):
     entities = getEntities(text)
     wikilinks = getWikipediaLinks(entities)
     html = addHTMLWikipediaLinks(wikilinks, text)
     return html
 
+# generate flashcards from entities
 def getFlashcards(summary):
     flashcards = []
     summary_sentences = sent_tokenize(summary)

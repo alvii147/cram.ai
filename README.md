@@ -1,3 +1,4 @@
+# WinterHacklympics (Best Use of Google Cloud), HackUMass VIII
 ## Inspiration
 The COVID-19 pandemic has resulted in schools and universities to shut down all over the world and adopt an online learning system. As a result, education has changed dramatically, with the distinctive rise of online lecture videos and digital learning platforms. Research suggests that online learning has been shown to increase retention of information, and take less time, meaning the changes coronavirus have caused might be here to stay.  
   

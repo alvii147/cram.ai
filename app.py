@@ -6,6 +6,7 @@ from Entity import entityToHTMLLinks, getFlashcards
 app = Flask(__name__)
 app.secret_key = "c9l3n5b1"
 
+# home page
 @app.route("/", methods = ["GET", "POST"])
 def home():
     if request.method == "POST":
@@ -14,6 +15,7 @@ def home():
         return redirect(url_for("summary", ID = ID))
     return render_template("home.html")
 
+# transcription page
 @app.route("/<ID>")
 def summary(ID):
     URL = f"https://www.youtube.com/embed/{ID}"

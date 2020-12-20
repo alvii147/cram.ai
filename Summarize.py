@@ -2,6 +2,7 @@ from nltk.corpus import stopwords
 from nltk.stem import PorterStemmer
 from nltk.tokenize import word_tokenize, sent_tokenize
 
+# get word frequency table from list of words
 def getWordFreqTable(words):
     stop_words = set(stopwords.words("english"))
     stemmer = PorterStemmer()
@@ -19,6 +20,7 @@ def getWordFreqTable(words):
 
     return table
 
+# get sentence score table
 def getSentenceScoreTable(sentences, wordFreqTable, character_depth = 10):
     table = dict()
 
@@ -35,6 +37,7 @@ def getSentenceScoreTable(sentences, wordFreqTable, character_depth = 10):
 
     return table
 
+# get average sentence score
 def getAverageScore(sentenceScoreTable):
     sumValues = 0
     for key in sentenceScoreTable:
@@ -43,6 +46,7 @@ def getAverageScore(sentenceScoreTable):
 
     return avg
 
+# get summary from sentences
 def getSummary(sentences, sentenceScoreTable, threshold, character_depth = 10):
     num_sentences = 0
     summary = ""
@@ -54,6 +58,7 @@ def getSummary(sentences, sentenceScoreTable, threshold, character_depth = 10):
 
     return summary
 
+# summarize text
 def summarize(text, thresholdScale = 1.1):
     words = word_tokenize(text)
     sentences = sent_tokenize(text)
