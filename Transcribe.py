@@ -1,4 +1,5 @@
 import re
+import string
 from youtube_transcript_api import YouTubeTranscriptApi
 import subprocess
 
@@ -12,11 +13,15 @@ def getID(URL):
 def getTranscript(ID):
     transcript_dict = YouTubeTranscriptApi.get_transcript(ID)
     transcript_array = [chunk["text"] for chunk in transcript_dict]
-    transcript_text = " ".join(transcript_array)
+    transcript_text_raw = " ".join(transcript_array)
+    printable = set(string.printable)
+    transcript_text = "".join(filter(lambda x: x in printable, transcript_text_raw))
     return transcript_text
 
 # add punctuation to text
 def punctuateText(text):
+    if '.' in text or ',' in text:
+        return text
     processedText = text.replace("&", "%26")
     cmd = subprocess.run(f"curl -d \"text={processedText}\" http://bark.phon.ioc.ee/punctuator", capture_output = True, encoding="utf8")
     return cmd.stdout
@@ -29,4 +34,5 @@ def smartTranscribe(URL):
     return punctuatedTranscript
 
 if __name__ == "__main__":
-    URL = "https://www.youtube.com/watch?v=eYOcuYhnrCU"
+    URL = "https://www.youtube.com/watch?v=CqgmozFr_GM"
+    print(smartTranscribe(URL))

@@ -16,9 +16,10 @@ def home():
     return render_template("home.html")
 
 # transcription page
-@app.route("/<ID>")
+@app.route("/videoinfo/<ID>")
 def summary(ID):
     URL = f"https://www.youtube.com/embed/{ID}"
+    print(f"URL = {URL}")
     transcript = punctuateText(getTranscript(ID))
     summary = summarize(transcript)
     flashcards = getFlashcards(summary)
